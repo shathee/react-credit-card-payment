@@ -1,7 +1,11 @@
 .App {
-    margin:auto;
+    margin:0 auto;
     background-color: #d3e9fc;
-    width: 100%;
+    width: 70%;
     padding: 30px 0;
     min-height:100vh;
+    display:flex;
+    flex-flow:column;
+    align-items:center;
+    justify-content:center;
 }
