@@ -1,0 +1,7 @@
+.CardForm {
+    width:60%;
+    margin: auto;
+    background-color: #fefefe;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    min-height:50vh;
+}
