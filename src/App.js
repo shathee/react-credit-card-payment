@@ -1,13 +1,16 @@
-import CardForm from './components/CardForm';
-import Card from './components/Card';
+import CardForm from './components/cardForm/CardForm';
+import Card from './components/card/Card';
+
+import {useState} from 'react'
 
 import './app.css';
 
 function App() {
+  const [flipStatus, setFlipStatus] = useState(false)
   return (
     <div className="App">
-      <Card />
-      <CardForm />
+      <Card flipStatus={flipStatus} />
+      <CardForm setFlipStatus={setFlipStatus} flipStatus={flipStatus} />
     </div>
   );
 }

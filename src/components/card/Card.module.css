@@ -1,0 +1,38 @@
+.Card {
+    background-color: rgb(27, 2, 2);
+    width: 40%;
+    margin: auto;
+    height: 200px;
+    z-index: 10;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    display: flex;
+    position: relative;
+    color: #fff;
+    font: 22px;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0));
+    transform-style: preserve-3d;
+    transition: 500ms;
+}
+
+.cardProvider {
+    float: right;
+    margin-top: 15px;
+    margin-right: 30px;
+    font: 800 28px;
+}
+
+.Flipped {
+    --rotate-y: 180deg; 
+}
+
+.Front,
+.Back {
+    position:absolute;
+    padding: 1rem;
+    backface-visibility: hidden;
+}
+
+.Back {
+  transform: rotateY(180deg);
+}
