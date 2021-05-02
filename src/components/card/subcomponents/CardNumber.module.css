@@ -1,0 +1,9 @@
+.CardNumber {
+    /* background: #cecece; */
+    background:transparent;
+    width: 90%;
+    margin: 10px 0px 5px 0px;
+    border-radius: 0.25rem;
+    font-size: 20px;
+    font-weight: bold;
+}

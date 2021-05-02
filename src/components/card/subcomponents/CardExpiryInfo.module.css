@@ -1,0 +1,10 @@
+.CardExpiryInfo {
+    width: 25%;
+    padding: 5px;
+    text-align: right;
+}
+.CardExpiryInfo p {
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+}

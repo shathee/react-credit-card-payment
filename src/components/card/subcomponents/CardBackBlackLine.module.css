@@ -1,0 +1,7 @@
+.CardBackBlackLine {
+    margin-top: 20px;
+    min-height: 38px;
+    width: 100%;
+    background-color: #000;
+    align-self:center;
+}

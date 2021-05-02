@@ -1,0 +1,11 @@
+.CardHolder {
+    width:60%;
+    /* border: 1px solid #fefefe; */
+    padding: 5px;
+}
+
+.CardHolder p {
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+}
