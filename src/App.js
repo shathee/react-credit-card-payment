@@ -7,10 +7,25 @@ import './app.css';
 
 function App() {
   const [flipStatus, setFlipStatus] = useState(false)
+  const [cardHolder, setCardHolder] = useState('Baki')
+  const [cardNumber, setCardNumber] = useState('#### #### #### ####')
+
+  const [itemFocus, setItemFocus] = useState(null)
+  
+
   return (
     <div className="App">
-      <Card flipStatus={flipStatus} />
-      <CardForm setFlipStatus={setFlipStatus} flipStatus={flipStatus} />
+      <Card 
+        flipStatus={flipStatus}
+        cardHolder={cardHolder}
+        cardNumber={cardNumber}
+        itemFocus={itemFocus} />
+      <CardForm 
+        setFlipStatus={setFlipStatus}
+        flipStatus={flipStatus} 
+        setCardHolder={setCardHolder} 
+        setCardNumber={setCardNumber}
+        setItemFocus={setItemFocus} />
     </div>
   );
 }

@@ -6,4 +6,9 @@
     border-radius: 0.25rem;
     font-size: 20px;
     font-weight: bold;
+    border: 1px solid transparent;
+}
+.Focus {
+    border-color: #fefefe;
+    transition: 1s;
 }

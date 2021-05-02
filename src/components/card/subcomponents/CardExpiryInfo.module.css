@@ -2,9 +2,15 @@
     width: 25%;
     padding: 5px;
     text-align: right;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
 }
 .CardExpiryInfo p {
     font-size: 12px;
     padding: 0px;
     margin: 0px;
+}
+.Focus {
+    border-color: #fefefe;
+    transition: all 1s linear;
 }

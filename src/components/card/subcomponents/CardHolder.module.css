@@ -1,6 +1,7 @@
 .CardHolder {
     width:60%;
-    /* border: 1px solid #fefefe; */
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
     padding: 5px;
 }
 
@@ -8,4 +9,8 @@
     font-size: 12px;
     padding: 0px;
     margin: 0px;
+}
+.Focus {
+    border-color: #fefefe;
+    transition: 1s;
 }
