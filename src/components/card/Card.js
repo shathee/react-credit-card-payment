@@ -11,7 +11,7 @@ import CardExpiryInfo from './subcomponents/CardExpiryInfo'
 import styles from './Card.module.css'
 
 
-export default function Card({flipStatus, cardHolder, cardNumber, itemFocus}) {
+export default function Card({flipStatus, cardHolder, cardNumber, cardProvider, itemFocus}) {
     
     const flipClass = flipStatus ? styles.Flipped : ''
     
@@ -19,7 +19,7 @@ export default function Card({flipStatus, cardHolder, cardNumber, itemFocus}) {
         <div className={[styles.Card, flipClass ].join(' ')}>
             <div className={styles.Front}>
             <Chip />
-            <ProviderNameFront />
+            <ProviderNameFront cardProvider={cardProvider} />
             <CardNumber cardNumber={cardNumber} itemFocus={itemFocus} />
             <CardHolder cardHolder={cardHolder} itemFocus={itemFocus} />
             <CardExpiryInfo  itemFocus={itemFocus} />
@@ -28,7 +28,7 @@ export default function Card({flipStatus, cardHolder, cardNumber, itemFocus}) {
             <CardBackBlackLine />
             <p className={styles.Cvv}> cvv </p>
             <CardBackWhiteLine />
-            <ProviderNameBack />
+            <ProviderNameBack cardProvider={cardProvider} />
             </div>
         </div>
     )

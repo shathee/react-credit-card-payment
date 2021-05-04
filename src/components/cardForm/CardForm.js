@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './CardForm.module.css'
 
-export default function CardForm({setFlipStatus, flipStatus, setCardHolder, setCardNumber, setItemFocus}) {
+export default function CardForm({setFlipStatus, flipStatus, setCardProvider, setCardHolder, setCardNumber, setItemFocus}) {
     const setFocus = (e) => {
-        // console.log(e.target.name)
         setItemFocus(e.target.name)
     }
     const unSetFocus = (e) => {
@@ -14,8 +13,28 @@ export default function CardForm({setFlipStatus, flipStatus, setCardHolder, setC
     }
     const updateCardNumber = (e) => {
         setCardNumber(e.target.value)
+        const ucp = updateCardProvider(e.target.value)
+        setCardProvider(ucp)
     }
     
+    const updateCardProvider = (cardNumber) => {
+        let number = cardNumber;
+        let re = new RegExp("^4");
+        if (number.match(re) != null) return "visa";
+
+        re = new RegExp("^(34|37)");
+        if (number.match(re) != null) return "amex";
+
+        re = new RegExp("^5[1-5]");
+        if (number.match(re) != null) return "mastercard";
+
+        re = new RegExp("^6011");
+        if (number.match(re) != null) return "discover";
+
+        return "discover"; 
+        
+    }
+
     const changeFlipStatus = (s) => {
         setFlipStatus(s)
     }

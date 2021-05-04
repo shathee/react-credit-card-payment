@@ -9,6 +9,7 @@ function App() {
   const [flipStatus, setFlipStatus] = useState(false)
   const [cardHolder, setCardHolder] = useState('Baki')
   const [cardNumber, setCardNumber] = useState('#### #### #### ####')
+  const [cardProvider, setCardProvider] = useState('discover')
 
   const [itemFocus, setItemFocus] = useState(null)
   
@@ -17,12 +18,14 @@ function App() {
     <div className="App">
       <Card 
         flipStatus={flipStatus}
+        cardProvider={cardProvider}
         cardHolder={cardHolder}
         cardNumber={cardNumber}
         itemFocus={itemFocus} />
       <CardForm 
         setFlipStatus={setFlipStatus}
         flipStatus={flipStatus} 
+        setCardProvider={setCardProvider}
         setCardHolder={setCardHolder} 
         setCardNumber={setCardNumber}
         setItemFocus={setItemFocus} />

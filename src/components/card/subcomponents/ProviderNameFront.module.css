@@ -3,3 +3,9 @@
     text-align: right;
     /* align-self:end; */
 }
+img {
+    height: 20px;
+}
+.discover{
+    background: url('../../../assets/images/discover.png')
+}

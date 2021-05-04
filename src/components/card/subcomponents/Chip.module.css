@@ -1,6 +1,5 @@
 .Chip {
-    
-    background:#B0BBBF;
+    background:#B0BBBF url(../../../assets/images/chip.jpg);
     height: 45px;
     width: 20%;
     border-radius: 0.25rem;

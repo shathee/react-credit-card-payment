@@ -3,11 +3,12 @@ import styles from './CardNumber.module.css'
 
 export default function CardNumber({cardNumber, itemFocus}) {
     
+    const number = cardNumber !== '' ? cardNumber : '#### #### #### ####';
     const focusClass = itemFocus === 'cardnumber' ? styles.Focus : ''
 
     return (
         <div className={[styles.CardNumber, focusClass].join(' ')}>
-            <p>{ cardNumber }</p>
+            <h3>{ number}</h3>
         </div>
     )
 }
