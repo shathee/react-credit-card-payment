@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './CardForm.module.css'
 
-export default function CardForm({setFlipStatus, flipStatus, setCardProvider, setCardHolder, setCardNumber, setItemFocus}) {
+export default function CardForm({setFlipStatus, flipStatus, setCardProvider, setCardHolder, cardNumber, setCardNumber, setCvv, setItemFocus}) {
+    
+    const [cardNumberMaxLength, setCardNumberMaxLength] = useState(16)
+
     const setFocus = (e) => {
         setItemFocus(e.target.name)
     }
@@ -11,8 +14,23 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     const updateCardHolder = (e) => {
         setCardHolder(e.target.value)
     }
+    
     const updateCardNumber = (e) => {
-        setCardNumber(e.target.value)
+        
+        let cardNumberValue = e.target.value.replace(/\D/g, '')
+        let formattedCardNumber = e.target.value.replace(/\D/g, '')
+
+        if ((/^3[47]\d{0,13}$/).test(cardNumberValue)) {
+            formattedCardNumber = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
+            setCardNumberMaxLength(17)
+        } else if ((/^\d{0,16}$/).test(cardNumberValue)) { // regular cc number, 16 digits
+            formattedCardNumber = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(/(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
+            setCardNumberMaxLength(19)
+        }else {
+            console.log('ddd')
+        }
+        
+        setCardNumber(formattedCardNumber)
         const ucp = updateCardProvider(e.target.value)
         setCardProvider(ucp)
     }
@@ -33,6 +51,10 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
 
         return "discover"; 
         
+    }
+
+    const updateCvv = (e) => {
+        setCvv(e.target.value)
     }
 
     const changeFlipStatus = (s) => {
@@ -56,7 +78,10 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                         <input name="cardnumber" onChange={updateCardNumber} 
                                 onFocus={setFocus} 
                                 onBlur={unSetFocus} 
-                                type="text" pattern="[0-9]*" inputMode="numeric" />
+                                type="text" pattern="[0-9]*" 
+                                maxLength = {cardNumberMaxLength}
+                                inputMode="numeric"
+                                value={cardNumber} />
                     </div>
                     <div className={styles.FieldGroup}>
                         <label htmlFor="name">Name</label>
@@ -85,7 +110,8 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                             <label htmlFor="securitycode">CVV</label>
                             <input id="securitycode" type="text" pattern="[0-9]*" inputMode="numeric"
                             onFocus={ () => changeFlipStatus (true) }
-                            onBlur={ () => changeFlipStatus (false) } />
+                            onBlur={ () => changeFlipStatus (false) }
+                            onChange={ updateCvv} />
                         </div>
                     </div>
                     <div className={styles.FieldGroup}>

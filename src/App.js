@@ -8,8 +8,9 @@ import './app.css';
 function App() {
   const [flipStatus, setFlipStatus] = useState(false)
   const [cardHolder, setCardHolder] = useState('Baki')
-  const [cardNumber, setCardNumber] = useState('#### #### #### ####')
+  const [cardNumber, setCardNumber] = useState('')
   const [cardProvider, setCardProvider] = useState('discover')
+  const [cvv, setCvv] = useState('')
 
   const [itemFocus, setItemFocus] = useState(null)
   
@@ -21,13 +22,16 @@ function App() {
         cardProvider={cardProvider}
         cardHolder={cardHolder}
         cardNumber={cardNumber}
+        cvv={cvv}
         itemFocus={itemFocus} />
       <CardForm 
         setFlipStatus={setFlipStatus}
         flipStatus={flipStatus} 
         setCardProvider={setCardProvider}
         setCardHolder={setCardHolder} 
+        cardNumber={cardNumber}
         setCardNumber={setCardNumber}
+        setCvv={setCvv}
         setItemFocus={setItemFocus} />
     </div>
   );

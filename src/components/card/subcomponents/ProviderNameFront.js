@@ -5,9 +5,9 @@ import styles from './ProviderNameFront.module.css'
 
 export default function ProviderNameFront({cardProvider}) {
     
-    console.log(cardProvider)
+
     return (
-        <div className={ [styles.cardProvider, styles.discover].join(' ') } title="cardProvider">
+        <div className={ [styles.cardProvider, styles.Provider].join(' ') } title="cardProvider">
             <img src={`assets/images/${cardProvider}.png`} alt="" />
         </div>
     )

@@ -5,4 +5,25 @@
     background-color: #fefefe;
     align-self:center;
     border-radius: 0.25rem;
+    color: #ccc;
+    text-align: right;
+   
+}
+
+.MaskedCvv{
+    font-size: 50px;
+    vertical-align: top;
+    margin-bottom: 30px;
+    padding-right: 10px;
+    height: 100%;
+}
+
+.Circle
+{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid;
+  background-color: #ff0000;
+  opacity: 0.3;
 }
