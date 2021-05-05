@@ -4,7 +4,7 @@ import styles from './CardForm.module.css'
 export default function CardForm({setFlipStatus, flipStatus, setCardProvider, setCardHolder, cardNumber, setCardNumber, setCvv, setItemFocus}) {
     
     const [cardNumberMaxLength, setCardNumberMaxLength] = useState(16)
-
+    
     const setFocus = (e) => {
         setItemFocus(e.target.name)
     }
@@ -16,24 +16,21 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     }
     
     const updateCardNumber = (e) => {
-        
-        let cardNumberValue = e.target.value.replace(/\D/g, '')
-        console.log(cardNumberValue)
-        // let formattedCardNumber = e.target.value.replace(/\D/g, '')
 
+        let cardNumberValue = e.target.value.replace(/\D/g, '')
+        
+    
         if ((/^3[47]\d{0,13}$/).test(cardNumberValue)) {
-            setCardNumberMaxLength(14)
-        } else if ((/^\d{0,16}$/).test(cardNumberValue)) { // regular cc number, 16 digits
             setCardNumberMaxLength(16)
+            cardNumberValue = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
             
-            // formattedCardNumber = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(/(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
-            
+        } else if ((/^\d{0,16}$/).test(cardNumberValue)) { // regular cc number, 16 digits
+            setCardNumberMaxLength(19)
+            cardNumberValue = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(/(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
         }else {
             console.log('ddd')
         }
-
-        
-        
+        // console.log(test)
         setCardNumber(cardNumberValue)
         const ucp = updateCardProvider(e.target.value)
         setCardProvider(ucp)
