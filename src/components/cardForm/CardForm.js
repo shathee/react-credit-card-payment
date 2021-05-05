@@ -18,19 +18,23 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     const updateCardNumber = (e) => {
         
         let cardNumberValue = e.target.value.replace(/\D/g, '')
-        let formattedCardNumber = e.target.value.replace(/\D/g, '')
+        console.log(cardNumberValue)
+        // let formattedCardNumber = e.target.value.replace(/\D/g, '')
 
         if ((/^3[47]\d{0,13}$/).test(cardNumberValue)) {
-            formattedCardNumber = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
-            setCardNumberMaxLength(17)
+            setCardNumberMaxLength(14)
         } else if ((/^\d{0,16}$/).test(cardNumberValue)) { // regular cc number, 16 digits
-            formattedCardNumber = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(/(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
-            setCardNumberMaxLength(19)
+            setCardNumberMaxLength(16)
+            
+            // formattedCardNumber = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(/(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
+            
         }else {
             console.log('ddd')
         }
+
         
-        setCardNumber(formattedCardNumber)
+        
+        setCardNumber(cardNumberValue)
         const ucp = updateCardProvider(e.target.value)
         setCardProvider(ucp)
     }

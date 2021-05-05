@@ -20,7 +20,7 @@ export default function Card({flipStatus, cardHolder, cardNumber, cardProvider, 
             <div className={styles.Front}>
             <Chip />
             <ProviderNameFront cardProvider={cardProvider} />
-            <CardNumber cardNumber={cardNumber} itemFocus={itemFocus} />
+            <CardNumber cardNumber={cardNumber} cardPovider={cardProvider} itemFocus={itemFocus} />
             <CardHolder cardHolder={cardHolder} itemFocus={itemFocus} />
             <CardExpiryInfo  itemFocus={itemFocus} />
             </div>

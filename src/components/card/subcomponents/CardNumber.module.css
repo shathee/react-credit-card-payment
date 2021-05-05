@@ -11,7 +11,14 @@
 .CardNumber h3 {
     margin: auto;
     padding: 15px 5px;
+    animation: move-text 0.75s forwards;
 }
+@keyframes move-text {
+    0% { bottom: -0.2em; opacity: 1; }
+    50% { bottom: 0.2em; }
+    100% { bottom: 0; opacity: 1; }
+}
+
 
 .Focus {
     border-color: #fefefe;
