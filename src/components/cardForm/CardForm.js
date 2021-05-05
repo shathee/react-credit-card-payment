@@ -111,7 +111,12 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
         const cvv = e.target.elements.cvv.value
         if(!cvv){
             errs.cvv = "You Must Provide CVV number"
+        }else if(cvv.length < 4){
+            errs.cvv = "CVV must be 4 Digits"
+        }else if(!(/\d/).test(cvv)){
+            errs.cvv = "CVV value must be numeric"
         }
+    
         
         setErrors(errs)
     }
@@ -171,10 +176,11 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                             <label htmlFor="cvv">CVV</label>
                             <input name="cvv" type="text" data-testid="cardCvvInput"
                             pattern="[0-9]*" 
-                            inputMode="numeric"
+                            
                             onFocus={ () => changeFlipStatus (true) }
                             onBlur={ () => changeFlipStatus (false) }
                             onChange={ updateCvv}
+                            inputMode="numeric"
                             maxLength = "4" />
                             <span className={styles.Err}>
                                 {errors.cvv}
