@@ -10,7 +10,7 @@ export default function CardExpiryInfo({cardMonth, cardYear, itemFocus}) {
     return (
         <div className={[styles.CardExpiryInfo, focusClass].join(' ')}>
             <p>Expires</p>
-            <p><span>{month}</span><span className={styles.Spearator}>|</span><span>{year}</span></p>
+            <h3><span>{month}</span><span className={styles.Spearator}>|</span><span>{year}</span></h3>
         </div>
     )
 }

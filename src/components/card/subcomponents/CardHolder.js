@@ -8,7 +8,7 @@ export default function CardHolder({cardHolder, itemFocus}) {
     return (
         <div className={[styles.CardHolder, focusClass].join(' ')}>
             <p>Card Hodler</p>
-            <p>{ cardHolder.toUpperCase() }</p>
+            <h3>{ cardHolder.toUpperCase() }</h3>
         </div>
     )
 }

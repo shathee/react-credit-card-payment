@@ -19,11 +19,9 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
 
         let cardNumberValue = e.target.value.replace(/\D/g, '')
         
-    
         if ((/^3[47]\d{0,13}$/).test(cardNumberValue)) {
             setCardNumberMaxLength(16)
-            cardNumberValue = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
-            
+            cardNumberValue = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')  
         } else if ((/^\d{0,16}$/).test(cardNumberValue)) { // regular cc number, 16 digits
             setCardNumberMaxLength(19)
             cardNumberValue = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(/(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
@@ -77,7 +75,7 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     ))
     
     const currentYear = new Date().getFullYear()
-    const yearOptions = Array.from(Array(5).keys()).map(y => (
+    const yearOptions = Array.from(Array(7).keys()).map(y => (
         <option key={y} value={ currentYear + y }>{ currentYear + y }</option>
     ))
     
@@ -120,11 +118,12 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                             </select>
                         </div>
                         <div className={[styles.FieldGroup, styles.Sec].join(' ')}>
-                            <label htmlFor="securitycode">CVV</label>
-                            <input id="securitycode" type="text" pattern="[0-9]*" inputMode="numeric"
+                            <label htmlFor="cvv">CVV</label>
+                            <input name="cvv" type="text" pattern="[0-9]*" inputMode="numeric"
                             onFocus={ () => changeFlipStatus (true) }
                             onBlur={ () => changeFlipStatus (false) }
-                            onChange={ updateCvv} />
+                            onChange={ updateCvv}
+                            maxLength = "4" />
                         </div>
                     </div>
                     <div className={styles.FieldGroup}>
