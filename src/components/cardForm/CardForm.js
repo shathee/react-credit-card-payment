@@ -68,7 +68,7 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     }
 
     const changeFlipStatus = (s) => {
-        console.log(flipStatus)
+        
         setFlipStatus(s)
     }
 
@@ -100,7 +100,7 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
         }
 
         const expirationmonth = e.target.elements.expirationmonth.value
-        // console.log(expirationmonth)
+        
         if(expirationmonth === 'MM'){
             errs.expirationmonth = "You Must Choose Expiration Month"
         }

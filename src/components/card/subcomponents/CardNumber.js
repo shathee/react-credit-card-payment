@@ -5,7 +5,7 @@ export default function CardNumber({cardNumber, cardPovider, itemFocus}) {
 
     let formattedCardNumber = cardNumber.replace(/\s/g, "")
     let maxlength = 0
-    // console.log(formattedCardNumber)
+    
     if (cardPovider === 'amex'){
       maxlength = 17
       formattedCardNumber = cardNumber.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
@@ -39,7 +39,6 @@ export default function CardNumber({cardNumber, cardPovider, itemFocus}) {
       number += '#';
     }
     
-    // const number = cardNumber !== '' ? cardNumber : '#### #### #### ####';
     const focusClass = itemFocus === 'cardnumber' ? styles.Focus : ''
     
     return (
