@@ -30,7 +30,12 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
         }else {
             console.log('ddd')
         }
-        // console.log(test)
+        
+        if (e.nativeEvent.inputType == 'deleteContentBackward') {
+            let lastChar = cardNumberValue.substring(cardNumberValue.length, cardNumberValue.length - 1)
+            if (lastChar == ' ') { cardNumberValue = cardNumberValue.substring(0, cardNumberValue.length - 1) }
+        }
+
         setCardNumber(cardNumberValue)
         const ucp = updateCardProvider(e.target.value)
         setCardProvider(ucp)

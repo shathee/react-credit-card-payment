@@ -3,9 +3,8 @@ import styles from './CardNumber.module.css'
 
 export default function CardNumber({cardNumber, cardPovider, itemFocus}) {
 
-  
     let formattedCardNumber = cardNumber.replace(/\s/g, "")
-    console.log(formattedCardNumber)
+    // console.log(formattedCardNumber)
     if (cardPovider === 'amex'){
       formattedCardNumber = cardNumber.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{6})/, '$1 $2 ')
     }else{
@@ -32,13 +31,15 @@ export default function CardNumber({cardNumber, cardPovider, itemFocus}) {
     }
     cardNumber = maskCardNumber(formattedCardNumber, cardPovider)
     
-    // if(cardNumber.length < 16){
-    //   console.log(cardNumber.length)
-    // }
-    const number = cardNumber !== '' ? cardNumber : '#### #### #### ####';
+    let number = cardNumber
+    while (number.length < 16) {
+      number += '#';
+    }
+    
+    
+    // const number = cardNumber !== '' ? cardNumber : '#### #### #### ####';
     const focusClass = itemFocus === 'cardnumber' ? styles.Focus : ''
     
-
     return (
         <div className={[styles.CardNumber, focusClass].join(' ')}>
             <h3>{ number}</h3>
