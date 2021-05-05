@@ -11,6 +11,8 @@ function App() {
   const [cardNumber, setCardNumber] = useState('')
   const [cardProvider, setCardProvider] = useState('discover')
   const [cvv, setCvv] = useState('')
+  const [cardMonth, setCardMonth] = useState('MM')
+  const [cardYear, setCardYear] = useState('YY')
 
   const [itemFocus, setItemFocus] = useState(null)
   
@@ -23,6 +25,8 @@ function App() {
         cardHolder={cardHolder}
         cardNumber={cardNumber}
         cvv={cvv}
+        cardMonth={cardMonth}
+        cardYear={cardYear}
         itemFocus={itemFocus} />
       <CardForm 
         setFlipStatus={setFlipStatus}
@@ -32,6 +36,8 @@ function App() {
         cardNumber={cardNumber}
         setCardNumber={setCardNumber}
         setCvv={setCvv}
+        setCardMonth={setCardMonth}
+        setCardYear={setCardYear}
         setItemFocus={setItemFocus} />
     </div>
   );

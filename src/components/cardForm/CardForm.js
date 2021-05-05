@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './CardForm.module.css'
 
-export default function CardForm({setFlipStatus, flipStatus, setCardProvider, setCardHolder, cardNumber, setCardNumber, setCvv, setItemFocus}) {
+export default function CardForm({setFlipStatus, flipStatus, setCardProvider, setCardHolder, cardNumber, setCardNumber, setCvv, setCardMonth, setCardYear, setItemFocus}) {
     
     const [cardNumberMaxLength, setCardNumberMaxLength] = useState(16)
     
@@ -27,8 +27,6 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
         } else if ((/^\d{0,16}$/).test(cardNumberValue)) { // regular cc number, 16 digits
             setCardNumberMaxLength(19)
             cardNumberValue = cardNumberValue.replace(/(\d{4})/, '$1 ').replace(/(\d{4}) (\d{4})/, '$1 $2 ').replace(/(\d{4}) (\d{4}) (\d{4})/, '$1 $2 $3 ')
-        }else {
-            console.log('ddd')
         }
         
         if (e.nativeEvent.inputType == 'deleteContentBackward') {
@@ -61,6 +59,13 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
 
     const updateCvv = (e) => {
         setCvv(e.target.value)
+    }
+
+    const updateMonth = (e) => {
+        setCardMonth(e.target.value)
+    }
+    const updateYear = (e) => {
+        setCardYear(e.target.value)
     }
 
     const changeFlipStatus = (s) => {
@@ -101,14 +106,16 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                             <label>Expiration Date</label>
                             <select name="expirationmonth" 
                                 onFocus={setFocus} 
-                                onBlur={unSetFocus} > 
-                                <option>Month</option>
+                                onBlur={unSetFocus}
+                                onChange={updateMonth} > 
+                                <option value="MM">Month</option>
                                 { monthOptions }
                             </select>
                             <select name="expirationyear"
                                 onFocus={setFocus} 
-                                onBlur={unSetFocus} >
-                                <option>Year</option>
+                                onBlur={unSetFocus}
+                                onChange={updateYear} >
+                                <option value="YY">Year</option>
                                 {yearOptions}
                             </select>
                         </div>

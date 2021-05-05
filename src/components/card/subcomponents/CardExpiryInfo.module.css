@@ -14,3 +14,11 @@
     border-color: #fefefe;
     transition: all 1s linear;
 }
+
+span {
+    width:30%;
+}
+
+.Spearator {
+    padding: 0 5px;
+}
