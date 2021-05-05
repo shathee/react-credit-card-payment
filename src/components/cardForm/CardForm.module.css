@@ -36,6 +36,12 @@
 .Sec {
     width: 30%;
 }
+.Err {
+    color:rgb(124, 9, 9);
+    width: 100%;
+    padding: 5px;
+    font-size: 10px;
+}
 
 label {
     padding-bottom: 5px;
@@ -62,4 +68,5 @@ select {
 input[type=submit] {
     background-color: #0055D4;
     color: #fefefe;
+    cursor: pointer;
 }

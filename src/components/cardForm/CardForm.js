@@ -4,6 +4,7 @@ import styles from './CardForm.module.css'
 export default function CardForm({setFlipStatus, flipStatus, setCardProvider, setCardHolder, cardNumber, setCardNumber, setCvv, setCardMonth, setCardYear, setItemFocus}) {
     
     const [cardNumberMaxLength, setCardNumberMaxLength] = useState(16)
+    const [errors, setErrors] = useState({})
     
     const setFocus = (e) => {
         setItemFocus(e.target.name)
@@ -67,6 +68,7 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     }
 
     const changeFlipStatus = (s) => {
+        console.log(flipStatus)
         setFlipStatus(s)
     }
 
@@ -78,19 +80,58 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     const yearOptions = Array.from(Array(7).keys()).map(y => (
         <option key={y} value={ currentYear + y }>{ currentYear + y }</option>
     ))
+        
+    const handleFormSubmit = (e) => {
+        
+        e.preventDefault();
+        let errs = {}
+        const cardnum = e.target.elements.cardnumber.value
+        if(!cardnum){
+            errs.cardnum = "Card Number Cannot be empty"
+        }else if ((/^3[47]/).test(cardnum) && cardnum.length < 16 ){
+            errs.cardnum = "Amex Card Number Must Be 14 digit Long"
+        }else if (cardnum.length < 19 ){
+            errs.cardnum = "Card Number Must Be 16 digit Long"
+        }
+
+        const cardhold = e.target.elements.name.value
+        if(!cardhold){
+            errs.cardhold = "Card Holder Name Cannot be empty"
+        }
+
+        const expirationmonth = e.target.elements.expirationmonth.value
+        // console.log(expirationmonth)
+        if(expirationmonth === 'MM'){
+            errs.expirationmonth = "You Must Choose Expiration Month"
+        }
+        const expirationyear = e.target.elements.expirationyear.value
+        if(expirationyear === 'YY'){
+            errs.expirationyear = "You Must Choose Expiration Year"
+        }
+        const cvv = e.target.elements.cvv.value
+        if(!cvv){
+            errs.cvv = "You Must Provide CVV number"
+        }
+        
+        setErrors(errs)
+    }
     
     return (
         <div className={styles.CardForm}>
+                <form onSubmit={handleFormSubmit}>
                 <div className={styles.FormContainer}>
                     <div className={styles.FieldGroup}>
                         <label htmlFor="cardnumber">Card Number</label>
                         <input name="cardnumber" onChange={updateCardNumber} 
                                 onFocus={setFocus} 
                                 onBlur={unSetFocus} 
-                                type="text" pattern="[0-9]*" 
+                                type="text" pattern="[0-9 ]*" 
                                 maxLength = {cardNumberMaxLength}
                                 inputMode="numeric"
                                 value={cardNumber} />
+                        <span className={styles.Err}>
+                          {errors.cardnum}
+                        </span>
                     </div>
                     <div className={styles.FieldGroup}>
                         <label htmlFor="name">Name</label>
@@ -98,6 +139,9 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                                 onFocus={setFocus} 
                                 onBlur={unSetFocus}
                                 type="text" />
+                        <span className={styles.Err}>
+                          {errors.cardhold}
+                        </span>
                     </div>
                     <div className={styles.ExpAndSec}>
                         <div className={styles.FieldGroup}>
@@ -116,20 +160,32 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                                 <option value="YY">Year</option>
                                 {yearOptions}
                             </select>
+                            <span className={styles.Err}>
+                                {errors.expirationmonth}
+                            </span>
+                            <span className={styles.Err}>
+                                {errors.expirationyear}
+                            </span>
                         </div>
                         <div className={[styles.FieldGroup, styles.Sec].join(' ')}>
                             <label htmlFor="cvv">CVV</label>
-                            <input name="cvv" type="text" pattern="[0-9]*" inputMode="numeric"
+                            <input name="cvv" type="text"
+                            pattern="[0-9]*" 
+                            inputMode="numeric"
                             onFocus={ () => changeFlipStatus (true) }
                             onBlur={ () => changeFlipStatus (false) }
                             onChange={ updateCvv}
                             maxLength = "4" />
+                            <span className={styles.Err}>
+                                {errors.cvv}
+                            </span>
                         </div>
                     </div>
                     <div className={styles.FieldGroup}>
                         <input type="submit" value="Submit" />
                     </div>
                 </div>
+                </form>
         </div>
     )
 }
