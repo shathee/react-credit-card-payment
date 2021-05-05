@@ -118,11 +118,11 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
     
     return (
         <div className={styles.CardForm}>
-                <form onSubmit={handleFormSubmit}>
+                <form onSubmit={handleFormSubmit} data-testid="cardInfoForm">
                 <div className={styles.FormContainer}>
                     <div className={styles.FieldGroup}>
                         <label htmlFor="cardnumber">Card Number</label>
-                        <input name="cardnumber" onChange={updateCardNumber} 
+                        <input name="cardnumber" data-testid="cardnumberInput" onChange={updateCardNumber} 
                                 onFocus={setFocus} 
                                 onBlur={unSetFocus} 
                                 type="text" pattern="[0-9 ]*" 
@@ -135,7 +135,7 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                     </div>
                     <div className={styles.FieldGroup}>
                         <label htmlFor="name">Name</label>
-                        <input name="name" onChange={updateCardHolder} 
+                        <input name="name"  data-testid="cardHolderInput" onChange={updateCardHolder} 
                                 onFocus={setFocus} 
                                 onBlur={unSetFocus}
                                 type="text" />
@@ -146,14 +146,14 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                     <div className={styles.ExpAndSec}>
                         <div className={styles.FieldGroup}>
                             <label>Expiration Date</label>
-                            <select name="expirationmonth" 
+                            <select name="expirationmonth" data-testid="cardMonthInput"
                                 onFocus={setFocus} 
                                 onBlur={unSetFocus}
                                 onChange={updateMonth} > 
                                 <option value="MM">Month</option>
                                 { monthOptions }
                             </select>
-                            <select name="expirationyear"
+                            <select name="expirationyear" data-testid="cardMonthYear"
                                 onFocus={setFocus} 
                                 onBlur={unSetFocus}
                                 onChange={updateYear} >
@@ -169,7 +169,7 @@ export default function CardForm({setFlipStatus, flipStatus, setCardProvider, se
                         </div>
                         <div className={[styles.FieldGroup, styles.Sec].join(' ')}>
                             <label htmlFor="cvv">CVV</label>
-                            <input name="cvv" type="text"
+                            <input name="cvv" type="text" data-testid="cardCvvInput"
                             pattern="[0-9]*" 
                             inputMode="numeric"
                             onFocus={ () => changeFlipStatus (true) }

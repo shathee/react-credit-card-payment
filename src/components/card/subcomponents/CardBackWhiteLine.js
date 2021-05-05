@@ -7,7 +7,7 @@ export default function CardBackWhiteLine({cvv}) {
     cvv.substring(cvv.length, cvv.length)
     
     return (
-        <div className={styles.CardBackWhiteLine}>
+        <div data-testid="cardCvvComponent" className={styles.CardBackWhiteLine}>
             <span className={styles.MaskedCvv}>{maskedCvv}</span>
         </div>
     )

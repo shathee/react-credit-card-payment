@@ -17,7 +17,7 @@ export default function Card({flipStatus, cardHolder, cardNumber, cardProvider, 
     
     return (
         <div className={[styles.Card, flipClass ].join(' ')}>
-            <div className={styles.Front}>
+            <div data-testid="cardFrontComponent" className={styles.Front}>
             <Chip />
             <ProviderNameFront cardProvider={cardProvider} />
             <CardNumber cardNumber={cardNumber} cardPovider={cardProvider} itemFocus={itemFocus} />
@@ -27,7 +27,7 @@ export default function Card({flipStatus, cardHolder, cardNumber, cardProvider, 
             cardYear={cardYear} 
             itemFocus={itemFocus} />
             </div>
-            <div className={styles.Back}>
+            <div data-testid="cardBackComponent" className={styles.Back}>
             <CardBackBlackLine />
             <p className={styles.Cvv}> cvv </p>
             <CardBackWhiteLine cvv={cvv} />

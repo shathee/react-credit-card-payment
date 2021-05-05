@@ -42,7 +42,7 @@ export default function CardNumber({cardNumber, cardPovider, itemFocus}) {
     const focusClass = itemFocus === 'cardnumber' ? styles.Focus : ''
     
     return (
-        <div className={[styles.CardNumber, focusClass].join(' ')}>
+        <div data-testid="cardnumberDisplay" className={[styles.CardNumber, focusClass].join(' ')}>
             <h3>{ number}</h3>
             
         </div>

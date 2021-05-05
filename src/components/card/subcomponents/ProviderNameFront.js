@@ -7,7 +7,7 @@ export default function ProviderNameFront({cardProvider}) {
     
     return (
         <div className={ [styles.cardProvider, styles.Provider].join(' ') } title="cardProvider">
-            <img src={`${PUBLIC_PATH}${cardProvider}.png`} alt="" />
+            <img data-testid="cardProviderImage" src={`${PUBLIC_PATH}${cardProvider}.png`} alt="" />
         </div>
     )
 }
